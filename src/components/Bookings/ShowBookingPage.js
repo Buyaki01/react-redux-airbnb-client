@@ -1,6 +1,6 @@
 import BookingDates from "./BookingDates"
-import AddressLink from "./AddressLink"
-import AccommodationGallery from "./AccommodationGallery"
+import AddressLink from "../Accommodations/AddressLink"
+import AccommodationGallery from "../Accommodations/AccommodationGallery"
 
 const ShowBookingPage = () => {
   return (
