@@ -17,6 +17,7 @@ The frontend of the app was built using the following technologies:
 - **React**
 - **Redux Toolkit**
 - **JavaScript**
+- **Tailwind**
 
 ### Getting Started
 To get started with this app, follow these steps:
