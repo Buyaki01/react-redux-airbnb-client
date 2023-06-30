@@ -4,7 +4,7 @@ const Header = () => {
   return(
     <header className='flex justify-between'>
       <Link 
-        // to={'/'} 
+        to={'/'} 
         className="flex items-center gap-1"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 -rotate-90">
