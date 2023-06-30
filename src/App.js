@@ -8,6 +8,8 @@ import BookingsPage from "./components/Bookings/BookingsPage"
 import ShowBookingPage from "./components/Bookings/ShowBookingPage"
 import AccommodationsPage from "./components/Accommodations/AccommodationsPage"
 import CreateNewAccommodation from "./components/Accommodations/CreateNewAccommodation"
+import EditAccommodationsPage from "./components/Accommodations/EditAccommodationsPage"
+import ShowAccommodationPage from "./components/Accommodations/ShowAccommodationPage"
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
           <Route path='/bookings' element={<BookingsPage/>}/>
           <Route path='/bookings/:id' element={<ShowBookingPage/>}/>
           <Route path='/accommodations' element={<AccommodationsPage/>}/>
-          <Route path='/accomodations/new' element={<CreateNewAccommodation/>}/>
+          <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
+          <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
+          <Route path='/accommodation/:id' element={<ShowAccommodationPage/>}/>
         </Route>
     </Routes>      
   )

@@ -14,13 +14,13 @@ const CreateNewAccommodation = () => {
           {/* <PhotosSection addPhoto={addPhoto} setAddPhoto={setAddPhoto}/> */}
 
           <label htmlFor="description" className="text-2xl mt-4">Description</label>
-          <p id="accomodation-description" className="text-gray-500 text-sm my-2"> Kindly describe your accomodation in depth</p>
-          <textarea type="" id="description" aria-describedby="accomodation-description" />
+          <p id="accommodation-description" className="text-gray-500 text-sm my-2"> Kindly describe your accommodation in depth</p>
+          <textarea type="" id="description" aria-describedby="accommodation-description" />
 
           {/* <FeaturesSection features={features} setFeatures={setFeatures}/> */}
 
           <label htmlFor="extraInfo" className="text-2xl mt-4">Extra Info</label>
-          <p id="extraInfo-description" className="text-gray-500 text-sm my-2">Kindly add extra information about your accomodation i.e house rules</p>
+          <p id="extraInfo-description" className="text-gray-500 text-sm my-2">Kindly add extra information about your accommodation i.e house rules</p>
           <textarea id="extraInfo" aria-describedby="extraInfo-description" />
 
           <label htmlFor="checkInOutGuests" className="text-2xl mt-4"> Check In and out times, maximum guests</label>
