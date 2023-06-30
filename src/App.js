@@ -5,6 +5,7 @@ import LoginPage from "./components/LoginPage"
 import RegisterPage from "./components/RegisterPage"
 import ProfilePage from "./components/ProfilePage"
 import BookingsPage from "./components/BookingsPage"
+import ShowBookingPage from "./components/ShowBookingPage"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/register' element={<RegisterPage/>}/>
           <Route path='/profile' element={<ProfilePage/>}/>
           <Route path='/bookings' element={<BookingsPage/>}/>
+          <Route path='/bookings/:id' element={<ShowBookingPage/>}/>
         </Route>
     </Routes>      
   )
