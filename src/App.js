@@ -3,6 +3,7 @@ import Layout from "./components/Layout"
 import IndexPage from "./components/IndexPage"
 import LoginPage from "./components/LoginPage"
 import RegisterPage from "./components/RegisterPage"
+import ProfilePage from "./components/ProfilePage"
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Route index element={<IndexPage/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/register' element={<RegisterPage/>}/>
+          <Route path='/profile' element={<ProfilePage/>}/>
         </Route>
     </Routes>      
   )

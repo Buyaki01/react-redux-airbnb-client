@@ -4,8 +4,23 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#F5385D',
+      },
+    },
   },
-  plugins: [],
-}
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        '@layer utilities': {
+          '.bg-primary': {
+            'background-color': 'var(--tw-bg-primary)',
+          },
+        },
+      });
+    },
+  ],
+};
+
 
