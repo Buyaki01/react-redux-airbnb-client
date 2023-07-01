@@ -8,7 +8,7 @@ This is the frontend of a Airbnb MERN (MongoDB, Express, React, Node.js) applica
 - **Edit accommodations**: Owners can update the details of their existing accommodations as needed, ensuring that the information on the app stays up-to-date.
 - **Show accommodations**: Prospective clients can browse through the list of available accommodations on the app, viewing photos and details of each property.
 - **Delete accommodations**: Owners can remove listings that are no longer available, keeping the app's database clean and accurate.
-- **Book accommodations**: Users can book accomodations
+- **Book accommodations**: Users can book accommodations
 - **Show all accommodations booked by user**: Users can see all their bookings
 
 ## Technologies Used
@@ -17,6 +17,7 @@ The frontend of the app was built using the following technologies:
 - **React**
 - **Redux Toolkit**
 - **JavaScript**
+- **Tailwind**
 
 ### Getting Started
 To get started with this app, follow these steps:
