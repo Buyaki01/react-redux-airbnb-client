@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const IndexPage = () => {
+const AllAccommodationsPage = () => {
   return(
     <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
       <Link>
@@ -17,4 +17,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default AllAccommodationsPage
