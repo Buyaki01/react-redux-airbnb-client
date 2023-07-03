@@ -1,4 +1,11 @@
+import { useSelector } from "react-redux"
+import { selectCurrentEmail } from "../features/profile/profileSlice"
+
 const ProfilePage = () => {
+  // const username = useSelector(selectCurrentUsername)
+  const email = useSelector(selectCurrentEmail)
+  console.log(email)
+
   return (
     <div> 
       <div className="text-center">
