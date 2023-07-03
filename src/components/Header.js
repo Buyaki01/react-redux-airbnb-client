@@ -27,7 +27,7 @@ const Header = () => {
       </div>
         
       <Link 
-        // to={user?'/account/profile':'/login'}
+        // to={user ? '/profile' : '/login'}
         className='flex flex-center gap-2 border border-gray-300 rounded-full py-2 px-4'
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

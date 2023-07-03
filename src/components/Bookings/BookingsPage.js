@@ -6,7 +6,7 @@ const BookingsPage = () => {
     <div>
       <div>
         <Link
-          // to={`/account/bookings/${booking._id}`}
+          // to={`bookings/${booking._id}`}
           className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mt-3"
         >
           <div className="w-48">
