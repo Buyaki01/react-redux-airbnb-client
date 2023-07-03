@@ -14,7 +14,7 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
           return response.status === 200 && !result.isError
         }
       }),
-      keepUnusedDataFor: 5,
+      keepUnusedDataFor: 60,
       transformResponse: responseData => { //responseData is from the query
         const loadedAccommodations = responseData.map(accommodation => {
           accommodation.id = accommodation._id
