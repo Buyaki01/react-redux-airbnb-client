@@ -40,7 +40,6 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 60,
       transformResponse: responseData => {
-        console.log(responseData)
         const loadedAccommodation = {
           ...responseData,
           id: responseData._id
@@ -70,6 +69,18 @@ export const selectAccommodationsResult = accommodationsApiSlice.endpoints.getAl
 
 export const {
   selectAll: selectAllAccommodations,
+  selectById: selectAccommodationsById,
+  selectIds: selectAccommodationsIds
+} = accommodationsAdapter.getSelectors(state => selectAccommodationsResult(state) ?? initialState)
+
+export const selectAccommodationResult = accommodationsApiSlice.endpoints.getAccommodation.select(
+  (state) => state.data
+)
+
+console.log(selectAccommodationResult)
+
+export const {
+  selectAll: selectAllAccommodation,
   selectById: selectAccommodationById,
   selectIds: selectAccommodationIds
-} = accommodationsAdapter.getSelectors(state => selectAccommodationsResult(state) ?? initialState)
+} = accommodationsAdapter.getSelectors(state => selectAccommodationResult(state) ?? initialState)

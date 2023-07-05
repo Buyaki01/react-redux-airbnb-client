@@ -23,13 +23,12 @@ const ShowAccommodationPage = () => {
 
     content = (
       <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
-        <h1 className="text-3xl">title</h1>
+        <h1 className="text-3xl">{title}</h1>
 
         <div className="my-8 grid gap-8 grid-cols-1 md:grid-cols-[2fr_1fr]">
           <div>
             <div className="my-4">
-              <h2 className="font-semibold text-2xl"> Description </h2>
-              description
+              <h2 className="font-semibold text-2xl"> {description} </h2>
             </div>
             Check-In: checkIn <br/>
             Check-Out: checkOut <br/>
