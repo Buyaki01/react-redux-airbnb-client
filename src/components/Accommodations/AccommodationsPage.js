@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import { useGetAccommodationsQuery } from "../../features/accommodations/accommodationsApiSlice"
+import { useGetAllAccommodationsQuery } from "../../features/accommodations/accommodationsApiSlice"
 
 const AccommodationsPage = () => {
-  const { data: accommodations, isLoading, isSuccess, isError, error } = useGetAccommodationsQuery()
+  const { data: accommodations, isLoading, isSuccess, isError, error } = useGetAllAccommodationsQuery()
 
   let content
 

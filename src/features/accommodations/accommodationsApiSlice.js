@@ -40,10 +40,11 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 60,
       transformResponse: responseData => {
-        const loadedAccommodation = responseData.map(accommodation => {
-          accommodation.id = accommodation._id
-          return accommodation
-        });
+        console.log(responseData)
+        const loadedAccommodation = {
+          ...responseData,
+          id: responseData._id
+        };
         return accommodationsAdapter.upsertOne(initialState, loadedAccommodation)
       },
       providesTags: (result, error, arg) => {
