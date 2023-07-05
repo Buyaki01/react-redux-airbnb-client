@@ -7,11 +7,13 @@ const initialState = accommodationsAdapter.getInitialState()
 
 export const accommodationsApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
-    getAccommodations: builder.query({
-      query: () => '/accommodations',
-      validateStatus: (response, result) => {
-        return response.status === 200 && !result.isError
-      },
+    getAllAccommodations: builder.query({
+      query: () => ({
+        url: '/accommodations',
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError
+        }
+      }),
       keepUnusedDataFor: 60,
       transformResponse: responseData => {
         const loadedAccommodations = responseData.map(accommodation => {
@@ -28,15 +30,40 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
           ]
         } else return [{ type: 'Accommodation', id: 'LIST'}]
       }
+    }),
+    getAccommodation: builder.query({
+      queryFn: (id) => ({
+        url: `/accommodations/${id}`,
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError
+        }
+      }),
+      keepUnusedDataFor: 60,
+      transformResponse: responseData => {
+        const loadedAccommodation = responseData.map(accommodation => {
+          accommodation.id = accommodation._id
+          return accommodation
+        });
+        return accommodationsAdapter.upsertOne(initialState, loadedAccommodation)
+      },
+      providesTags: (result, error, arg) => {
+        if (result?.ids) {
+          return [
+            { type: 'Accommodation', id: 'LIST' },
+            ...result.ids.map(id => ({ type: 'Accommodation', id }))
+          ]
+        } else return [{ type: 'Accommodation', id: 'LIST'}]
+      }
     })
   })
 })
 
 export const {
-  useGetAccommodationsQuery,
+  useGetAllAccommodationsQuery,
+  useGetAccommodationQuery,
 } = accommodationsApiSlice
 
-export const selectAccommodationsResult = accommodationsApiSlice.endpoints.getAccommodations.select(
+export const selectAccommodationsResult = accommodationsApiSlice.endpoints.getAllAccommodations.select(
   (state) => state.data //Only selects the data property from the state using the select() method
 )
 
