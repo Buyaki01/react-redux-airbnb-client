@@ -56,7 +56,7 @@ const ShowAccommodationPage = () => {
             > 
               Book this place 
               {/* {noOfNights > 0 && ( */}
-                {/* <span> ${noOfNights * accomodation.price }</span> */}
+                {/* <span> ${noOfNights * accommodation.price }</span> */}
               {/* )} */}
             </button>
           </div>
