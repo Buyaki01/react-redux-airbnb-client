@@ -21,7 +21,7 @@ function App() {
           <Route path='/profile' element={<ProfilePage/>}/>
           <Route path='/bookings' element={<BookingsPage/>}/>
           <Route path='/bookings/:id' element={<ShowBookingPage/>}/>
-          <Route path='/accommodations' element={<MyAccommodationsPage/>}/>
+          <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
           <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
           <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
           <Route path='/accommodation/:id' element={<ShowAccommodationPage/>}/>
