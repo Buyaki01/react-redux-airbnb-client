@@ -77,8 +77,6 @@ export const selectAccommodationResult = accommodationsApiSlice.endpoints.getAcc
   (state) => state.data
 )
 
-console.log(selectAccommodationResult)
-
 export const {
   selectAll: selectAllAccommodation,
   selectById: selectAccommodationById,

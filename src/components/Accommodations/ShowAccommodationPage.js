@@ -2,11 +2,9 @@ import { useParams } from "react-router"
 import { useGetAccommodationQuery } from "../../features/accommodations/accommodationsApiSlice"
 
 const ShowAccommodationPage = () => {
-  const {id} = useParams()
+  const { id } = useParams()
 
   const { data: accommodation, isLoading, isSuccess, isError, error } = useGetAccommodationQuery(id)
-
-  console.log(accommodation)
 
   let content
 

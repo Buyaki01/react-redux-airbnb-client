@@ -22,7 +22,7 @@ const AccommodationsPage = () => {
         {ids.map((id) => {
           const accommodation = entities[id]
           return (
-            <Link key={id} to={`/accommodation/${id}`}>
+            <Link key={id} to={`/accommodations/${id}`}>
               <div className="bg-gray-500 mb-2 rounded-2xl flex">
                 <img className="rounded-2xl object-cover aspect-square" src="" alt={accommodation.title} />
               </div>
