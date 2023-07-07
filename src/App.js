@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import Layout from "./components/Layout"
 import AccommodationsPage from "./components/Accommodations/AccommodationsPage"
-import LoginPage from "./components/LoginPage"
+import LoginPage from "./features/auth/LoginPage"
 import RegisterPage from "./components/RegisterPage"
 import ProfilePage from "./components/ProfilePage"
 import BookingsPage from "./components/Bookings/BookingsPage"

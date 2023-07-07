@@ -12,7 +12,6 @@ export const bookingsApiSlice = apiSlice.injectEndpoints({
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError
       },
-      keepUnusedDataFor: 60,
       transformResponse: responseData => {
         const loadedBookings = responseData.map(booking => {
           booking.id = booking._id
