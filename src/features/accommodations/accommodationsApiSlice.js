@@ -32,12 +32,17 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
       }
     }),
     getAccommodation: builder.query({
-      queryFn: (id) => ({
-        url: `/accommodations/${id}`,
-        validateStatus: (response, result) => {
-          return response.status === 200 && !result.isError
+      queryFn: (id) => {
+        console.log('ID:', id); // Add this line to log the ID
+    
+        return {
+          url: `/accommodations/${id}`,
+          validateStatus: (response, result) => {
+            console.log('Response:', response)
+            return response.status === 200 && !result.isError
+          }
         }
-      }),
+      },
       keepUnusedDataFor: 60,
       transformResponse: responseData => {
         const loadedAccommodation = {
