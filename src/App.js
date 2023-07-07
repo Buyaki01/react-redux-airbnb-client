@@ -24,7 +24,7 @@ function App() {
           <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
           <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
           <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
-          <Route path='/accommodation/:id' element={<ShowAccommodationPage/>}/>
+          <Route path='/accommodations/:id' element={<ShowAccommodationPage/>}/>
         </Route>
     </Routes>      
   )
