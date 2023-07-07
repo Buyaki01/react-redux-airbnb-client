@@ -28,7 +28,19 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
           ]
         } else return [{ type: 'Accommodation', id: 'LIST'}]
       }
-    })
+    }),
+    updateAccommodation: builder.mutation({
+      query: initialAccommodationData => ({
+        url: `/accommodations`,
+        method: 'PATCH',
+        body: {
+          ...initialAccommodationData,
+        }
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: 'Accommodation', id: arg.id }
+      ]
+    }),
   })
 })
 
