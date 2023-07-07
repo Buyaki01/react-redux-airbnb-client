@@ -41,11 +41,23 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
         { type: 'Accommodation', id: arg.id }
       ]
     }),
+    deleteAccommodation: builder.mutation({
+      query: ({ id }) => ({
+        url: `/accommodations`,
+        method: 'DELETE',
+        body: { id }
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: 'Accommodation', id: arg.id}
+      ]
+    }),
   })
 })
 
 export const {
   useGetAccommodationsQuery,
+  useUpdateAccommodationMutation,
+  useDeleteAccommodationMutation,
 } = accommodationsApiSlice
 
 export const selectAccommodationsResult = accommodationsApiSlice.endpoints.getAccommodations.select(
