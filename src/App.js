@@ -19,12 +19,12 @@ function App() {
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/register' element={<RegisterPage/>}/>
           <Route path='/profile' element={<ProfilePage/>}/>
-          <Route path='/bookings' element={<BookingsPage/>}/>
-          <Route path='/bookings/:id' element={<ShowBookingPage/>}/>
+          <Route path='/mybookings' element={<BookingsPage/>}/>
+          <Route path='/mybooking/:id' element={<ShowBookingPage/>}/>
           <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
           <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
           <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
-          <Route path='/accommodation/:id' element={<ShowAccommodationPage/>}/>
+          <Route path='/accommodations/:id' element={<ShowAccommodationPage/>}/>
         </Route>
     </Routes>      
   )
