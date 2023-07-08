@@ -20,7 +20,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
           const { data } = await queryFulfilled
           //console.log(data)
           dispatch(logOut())
-          setTimeout(() => {
+          setTimeout(() => {//execute this function after 1000ms, 1 sec
             dispatch(apiSlice.util.resetApiState())
           }, 1000)
         } catch (err) {
