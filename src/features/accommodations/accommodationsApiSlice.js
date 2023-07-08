@@ -1,4 +1,4 @@
-import { createEntityAdapter } from "@reduxjs/toolkit"
+import { createSelector, createEntityAdapter } from "@reduxjs/toolkit"
 import { apiSlice } from "../../app/api/apiSlice"
 
 const accommodationsAdapter = createEntityAdapter({})
@@ -59,12 +59,16 @@ export const {
   useDeleteAccommodationMutation,
 } = accommodationsApiSlice
 
-export const selectAccommodationsResult = accommodationsApiSlice.endpoints.getAccommodations.select(
-  (state) => state.data //Only selects the data property from the state using the select() method
+export const selectAccommodationsResult = accommodationsApiSlice.endpoints.getAccommodations.select()
+
+// creates memoized selector
+const selectAccommodationsData = createSelector(
+  selectAccommodationsResult,
+  accommodationsResult => accommodationsResult.data // normalized state object with ids & entities
 )
 
 export const {
   selectAll: selectAllAccommodations,
   selectById: selectAccommodationById,
   selectIds: selectAccommodationIds
-} = accommodationsAdapter.getSelectors(state => selectAccommodationsResult(state) ?? initialState)
+} = accommodationsAdapter.getSelectors(state => selectAccommodationsData(state) ?? initialState)
