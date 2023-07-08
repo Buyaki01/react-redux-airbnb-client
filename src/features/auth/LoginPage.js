@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setCredentials } from "./authSlice"
 import { useLoginMutation } from "./authApiSlice"
+import usePersist from "../../hooks/usePersist"
 
 const LoginPage = () => {
   const emailRef = useRef()
@@ -10,6 +11,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
+  const [persist, setPersist] = usePersist()
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -74,6 +76,17 @@ const LoginPage = () => {
             onChange={e => setPassword(e.target.value)}
           />
           <button className="primary mt-2"> Login </button>
+
+          <label htmlFor="persist">
+            <input
+              type="checkbox"
+              id="persist"
+              onChange={() => setPersist(prev => !prev)}
+              checked={persist}
+            />
+            Trust This Device
+          </label>
+
           <div className="text-center mt-2 text-gray-500">
             Don't have an account yet?{" "}
             <Link className="underline text-black" to={"/register"}>Register now</Link>
