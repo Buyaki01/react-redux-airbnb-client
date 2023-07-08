@@ -10,9 +10,6 @@ const ShowAccommodationPage = () => {
 
   const accommodation = useSelector((state) => selectAccommodationById(state, id))
 
-  console.log('ID:', id);
-  console.log('Accommodation:', accommodation);
-
   return (
     <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
       <h1 className="text-3xl">title</h1>
