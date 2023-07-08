@@ -17,3 +17,11 @@ button.primary{
   background-color: #F5385D;
   @apply bg-primary p-2 w-full text-white rounded-2xl
 }
+
+.errmsg {
+  display: inline-block;
+  background-color: var(--TABLE-BGCOLOR);
+  color: var(--ERROR);
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+}

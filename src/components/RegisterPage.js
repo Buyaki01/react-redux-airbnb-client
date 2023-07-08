@@ -14,6 +14,8 @@ const RegisterPage = () => {
 
   const navigate = useNavigate()
 
+  const errClass = errMsg ? "errmsg" : "offscreen"
+
   const [register, { isLoading }] = useRegisterMutation()
 
   useEffect(() => {
