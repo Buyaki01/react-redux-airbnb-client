@@ -75,7 +75,7 @@ const LoginPage = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <button className="primary mt-2"> Login </button>
+          <button className="primary mt-2 mb-2"> Login </button>
 
           <label htmlFor="persist">
             <input

@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import { useSendLogoutMutation } from "../features/auth/authApiSlice"
 import { useEffect } from "react"
+import useAuth from "../hooks/useAuth"
 
 const ProfilePage = () => {
+
+  const { username } = useAuth()
+
   const navigate = useNavigate()
 
   const [sendLogout, {
@@ -23,7 +27,7 @@ const ProfilePage = () => {
   return (
     <div> 
       <div className="text-center">
-        <h5>Logged in as </h5> 
+        <h5>Logged in as {username} </h5> 
         <button 
           className="primary max-w-sm mt-3" 
           title="Logout"
