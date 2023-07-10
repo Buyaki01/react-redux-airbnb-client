@@ -3,6 +3,8 @@ import AccommodationGallery from "./AccommodationGallery"
 import { useParams } from "react-router-dom"
 import { useGetAccommodationsQuery } from "../../features/accommodations/accommodationsApiSlice"
 import { useEffect } from "react"
+import { useAddNewBookingMutation } from "../../features/Bookings/bookingsApiSlice"
+import { differenceInCalendarDays } from "date-fns"
 
 
 const ShowAccommodationPage = () => {
@@ -21,6 +23,44 @@ const ShowAccommodationPage = () => {
   // Wait for the data to load
   if (!accommodation) {
     return <div>Loading...</div>;
+  }
+
+  const [addNewBooking, {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  }] = useAddNewBookingMutation()
+
+  const [checkIn, setCheckIn] = useState('')
+  const [checkOut, setCheckOut] = useState('')
+  const [noOfGuests, setNoOfGuests] = useState(1)
+  const [name, setName] = useState('')
+  const [mobileNumber, setMobileNumber] = useState('')
+
+  useEffect(() => {
+    if (isSuccess) {
+      setCheckIn('')
+      setCheckOut('')
+      setNoOfGuests('')
+      setName('')
+      setMobileNumber('')
+      navigate('/mybookings')
+    }
+  }, [isSuccess, navigate])
+
+  let noOfNights = 0
+  if (checkIn && checkOut) {
+    noOfNights = differenceInCalendarDays(new Date (checkOut), new Date (checkIn))
+  }
+
+  const canSave = [checkIn, checkOut, noOfGuests, name, mobileNumber].every(Boolean) && !isLoading
+
+  const bookThisPlace = async (e) => {
+    e.preventDefault()
+    if (canSave) {
+      await addNewBooking({ id, checkIn, checkOut, noOfGuests, name, mobileNumber })
+    }
   }
 
   return (
@@ -52,37 +92,37 @@ const ShowAccommodationPage = () => {
               <div className="flex">
                 <div className="py-3 px-4">
                   <label htmlFor="checkIn"> Check In: </label>
-                  <input type="date" id="checkIn" />
+                  <input type="date" id="checkIn" value={checkIn} onChange={e => setCheckIn(e.target.value)} />
                 </div>
                 <div className="py-3 px-4 border-l">
                   <label htmlFor="checkOut"> Check Out: </label>
-                  <input type="date" id="checkOut" />
+                  <input type="date" id="checkOut" value={checkOut} onChange={e => setCheckOut(e.target.value)} />
                 </div>
               </div>
               <div className="py-3 px-4 border-t">
                 <label htmlFor="noOfGuests"> Number of guests: </label>
-                <input type="number" id="noOfGuests" />
+                <input type="number" id="noOfGuests" value={noOfGuests} onChange={e => setNoOfGuests(e.target.value)} />
               </div>
             </div>
 
-            {/* {noOfNights > 0 && ( */}
+            {noOfNights > 0 && (
               <div className="py-3 px-4 border-t">
                 <label htmlFor="guestName"> Your full name: </label>
-                <input type="text" id="guestName" />
+                <input type="text" id="guestName" value={name} onChange={e => setName(e.target.value)}/>
 
                 <label htmlFor="guestMobile"> Phone Number: </label>
-                <input type="tel" id="guestMobile" />
+                <input type="tel" id="guestMobile" value={mobileNumber} onChange={e => setMobileNumber(e.target.value)} />
               </div>
-            {/* )} */}
+            )}
 
             <button 
-              // onClick={bookThisPlace} 
+              onClick={bookThisPlace} 
               className="primary mt-4"
             > 
               Book this place 
-              {/* {noOfNights > 0 && ( */}
-                {/* <span> ${noOfNights * accommodation.price }</span> */}
-              {/* )} */}
+              {noOfNights > 0 && (
+                <span> ${noOfNights * accommodation.price }</span>
+              )}
             </button>
           </div>
         </div>
