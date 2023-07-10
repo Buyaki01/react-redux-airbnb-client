@@ -1,14 +1,28 @@
 import AddressLink from "./AddressLink"
 import AccommodationGallery from "./AccommodationGallery"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useGetAccommodationsQuery } from "../../features/accommodations/accommodationsApiSlice"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useAddNewBookingMutation } from "../../features/Bookings/bookingsApiSlice"
 import { differenceInCalendarDays } from "date-fns"
 
 
 const ShowAccommodationPage = () => {
   const { id } = useParams()
+  const [checkIn, setCheckIn] = useState('')
+  const [checkOut, setCheckOut] = useState('')
+  const [noOfGuests, setNoOfGuests] = useState(1)
+  const [name, setName] = useState('')
+  const [mobileNumber, setMobileNumber] = useState('')
+
+  const navigate = useNavigate()
+
+  const [addNewBooking, {
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  }] = useAddNewBookingMutation()
 
   const { accommodation } = useGetAccommodationsQuery("accommodationsList", {
     selectFromResult: ({ data }) => ({
@@ -20,24 +34,6 @@ const ShowAccommodationPage = () => {
     
   }, [accommodation])
 
-  // Wait for the data to load
-  if (!accommodation) {
-    return <div>Loading...</div>;
-  }
-
-  const [addNewBooking, {
-    isLoading,
-    isSuccess,
-    isError,
-    error
-  }] = useAddNewBookingMutation()
-
-  const [checkIn, setCheckIn] = useState('')
-  const [checkOut, setCheckOut] = useState('')
-  const [noOfGuests, setNoOfGuests] = useState(1)
-  const [name, setName] = useState('')
-  const [mobileNumber, setMobileNumber] = useState('')
-
   useEffect(() => {
     if (isSuccess) {
       setCheckIn('')
@@ -48,6 +44,11 @@ const ShowAccommodationPage = () => {
       navigate('/mybookings')
     }
   }, [isSuccess, navigate])
+
+  // Wait for the data to load
+  if (!accommodation) {
+    return <div>Loading...</div>;
+  }
 
   let noOfNights = 0
   if (checkIn && checkOut) {
