@@ -20,6 +20,8 @@ function App() {
           <Route index element={<AccommodationsPage/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/register' element={<RegisterPage/>}/>
+          <Route path='/accommodations/:id' element={<ShowAccommodationPage/>}/>
+          
           <Route element={<PersistLogin />}>
             <Route element={<Prefetch/>}>
               <Route path='/profile' element={<ProfilePage/>}/>
@@ -28,7 +30,6 @@ function App() {
               <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
               <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
               <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
-              <Route path='/accommodations/:id' element={<ShowAccommodationPage/>}/>
             </Route>
           </Route>
         </Route>

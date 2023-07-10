@@ -1,18 +1,31 @@
 import AddressLink from "./AddressLink"
 import AccommodationGallery from "./AccommodationGallery"
 import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { selectAccommodationById } from "../../features/accommodations/accommodationsApiSlice"
+import { useGetAccommodationsQuery } from "../../features/accommodations/accommodationsApiSlice"
+import { useEffect } from "react"
 
 
 const ShowAccommodationPage = () => {
   const { id } = useParams()
 
-  const accommodation = useSelector((state) => selectAccommodationById(state, id))
+  const { accommodation } = useGetAccommodationsQuery("accommodationsList", {
+    selectFromResult: ({ data }) => ({
+      accommodation: data?.entities[id]
+    })
+  })
+
+  useEffect(() => {
+    
+  }, [accommodation])
+
+  // Wait for the data to load
+  if (!accommodation) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
-      <h1 className="text-3xl">title</h1>
+      <h1 className="text-3xl">{accommodation.title}</h1>
 
       <AddressLink accommodation={accommodation} /> 
 
@@ -32,7 +45,7 @@ const ShowAccommodationPage = () => {
         <div>
           <div className="bg-white shadow p-4 rounded-2xl">
             <div className="text-2xl text-center">
-              Price: price / per night
+              Price: ${accommodation.price} / per night
             </div>
 
             <div className="border rounded-2xl mt-4">
@@ -79,7 +92,7 @@ const ShowAccommodationPage = () => {
         <div>
           <h2 className="font-semibold text-2xl">Extra Info</h2>
         </div>
-        <div className="mb-4 mt-2 text-sm text-gray-700 leading-5">extraInfo</div>
+        <div className="mb-4 mt-2 text-sm text-gray-700 leading-5">{accommodation.extraInfo}</div>
       </div>
     </div>
   )

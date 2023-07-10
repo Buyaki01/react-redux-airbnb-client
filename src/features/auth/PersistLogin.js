@@ -55,9 +55,9 @@ const PersistLogin = () => {
   } else if (isError) { //persist: yes, token: no
     console.log('error')
     content = (
-      <p className="errmsg">
-        {error.data?.message}
-        <Link to="/login">Please login again</Link>
+      <p className='errmsg text-center'>
+        {`${error?.data?.message} - `}
+        <Link to="/login" className="underline">Please login again</Link>.
       </p>
     )
   } else if (isSuccess && trueSuccess) { //persist: yes, token: yes

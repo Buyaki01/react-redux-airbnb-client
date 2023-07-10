@@ -8,10 +8,12 @@ const initialState = accommodationsAdapter.getInitialState()
 export const accommodationsApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getAccommodations: builder.query({
-      query: () => '/accommodations',
-      validateStatus: (response, result) => {
-        return response.status === 200 && !result.isError
-      },
+      query: () => ({
+        url: '/accommodations',
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError
+        },
+      }),
       transformResponse: responseData => {
         const loadedAccommodations = responseData.map(accommodation => {
           accommodation.id = accommodation._id
