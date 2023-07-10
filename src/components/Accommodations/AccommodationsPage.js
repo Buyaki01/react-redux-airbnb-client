@@ -2,7 +2,16 @@ import { Link } from "react-router-dom"
 import { useGetAccommodationsQuery } from "../../features/accommodations/accommodationsApiSlice"
 
 const AccommodationsPage = () => {
-  const { data: accommodations, isLoading, isSuccess, isError, error } = useGetAccommodationsQuery()
+  const { 
+    data: accommodations, 
+    isLoading, 
+    isSuccess, 
+    isError, 
+    error } = useGetAccommodationsQuery('accommodationsList', {
+      pollingInterval: 15000, //sets the polling interval to 60000 milliseconds (60 seconds). This means that the hook will automatically refetch the accommodations data from the API every 60 seconds, keeping it up to date.
+      refetchOnFocus: true, //specifies that the accommodations data should be refetched from the API whenever the user interacts with the application window. For example, if the user switches tabs or returns to the application after being away, the data will be refetched to ensure it is current.
+      refetchOnMountOrArgChange: true //indicates that the accommodations data should be refetched from the API when the component mounts (initially renders) or when the arguments passed to the useGetAccommodationsQuery hook change. If any of the arguments provided to the hook change during the component's lifecycle, the accommodations data will be refetched to reflect the updated arguments.
+    })
 
   let content
 
