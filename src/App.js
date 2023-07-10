@@ -11,6 +11,7 @@ import CreateNewAccommodation from "./components/Accommodations/CreateNewAccommo
 import EditAccommodationsPage from "./components/Accommodations/EditAccommodationsPage"
 import ShowAccommodationPage from "./components/Accommodations/ShowAccommodationPage"
 import Prefetch from "./features/auth/Prefetch"
+import PersistLogin from "./features/auth/PersistLogin"
 
 function App() {
   return (
@@ -19,14 +20,16 @@ function App() {
           <Route index element={<AccommodationsPage/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/register' element={<RegisterPage/>}/>
-          <Route element={<Prefetch/>}>
-            <Route path='/profile' element={<ProfilePage/>}/>
-            <Route path='/mybookings' element={<BookingsPage/>}/>
-            <Route path='/mybooking/:id' element={<ShowBookingPage/>}/>
-            <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
-            <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
-            <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
-            <Route path='/accommodations/:id' element={<ShowAccommodationPage/>}/>
+          <Route element={<PersistLogin />}>
+            <Route element={<Prefetch/>}>
+              <Route path='/profile' element={<ProfilePage/>}/>
+              <Route path='/mybookings' element={<BookingsPage/>}/>
+              <Route path='/mybooking/:id' element={<ShowBookingPage/>}/>
+              <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
+              <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
+              <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
+              <Route path='/accommodations/:id' element={<ShowAccommodationPage/>}/>
+            </Route>
           </Route>
         </Route>
     </Routes>      
