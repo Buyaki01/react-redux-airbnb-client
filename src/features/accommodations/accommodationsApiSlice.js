@@ -30,6 +30,18 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: 'Accommodation', id: 'LIST'}]
       }
     }),
+    addNewAccommodation: builder.mutation({
+      query: initialUserData => ({
+        url: '/accommodations',
+        method: 'POST',
+        body: {
+          ...initialUserData,
+        }
+      }),
+      invalidatesTags: [
+        { type: 'Accommodation', id: "LIST" }
+      ]
+    }),
     updateAccommodation: builder.mutation({
       query: initialAccommodationData => ({
         url: `/accommodations`,
@@ -57,6 +69,7 @@ export const accommodationsApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetAccommodationsQuery,
+  useAddNewAccommodationMutation,
   useUpdateAccommodationMutation,
   useDeleteAccommodationMutation,
 } = accommodationsApiSlice
