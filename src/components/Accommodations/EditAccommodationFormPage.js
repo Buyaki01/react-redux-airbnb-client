@@ -40,7 +40,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
 
   const onSaveAccommodationClicked = async (e) => {
     await updateAccommodation({ id: accommodation.id, 
-      title, address, description, extraInfo, checkIn, checkOut, maxGuests, price
+      title, address, description, features, extraInfo, checkIn, checkOut, maxGuests, price
     })
   }
 
