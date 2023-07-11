@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom"
+import useAuth from "../../hooks/useAuth"
+import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
+import { useSelector } from "react-redux"
 
 const MyAccommodationsPage = () => {
+
+  const { id: userId } = useAuth()
+
+  const accommodations = useSelector(selectAllAccommodations)
+
+  const ownersAccommodation = accommodations.filter((accommodation) => accommodation.owner === userId)
+  
   return (
     <div>
       <div className="text-center mt-3">
@@ -16,9 +26,9 @@ const MyAccommodationsPage = () => {
       </div>
 
       <div className="mt-4">
-        {/* {places.length > 0 && places.map(place => ( */}
+        {ownersAccommodation.length > 0 && ownersAccommodation.map(accommodation => (
           <Link 
-            // to={`/accommodations/edit/${id}`}
+            to={`/accommodations/edit/${accommodation.id}`}
             className="flex cursor-pointer gap-4 bg-gray-100 p-4 mb-4 rounded-2xl" 
           >
             <div className="flex w-32 h-32 bg-gray-300 grow flex-shrink-0">
@@ -27,11 +37,11 @@ const MyAccommodationsPage = () => {
               {/* )}  */}
             </div>
             <div className="flex-grow-0">
-              <h2 className="text-xl">title</h2>
-              <p className="text-sm mt-2">description</p>
+              <h2 className="text-xl">{accommodation.title}</h2>
+              <p className="text-sm mt-2">{accommodation.description}</p>
             </div>
           </Link>
-        {/* )) } */}
+        )) } 
       </div>
     </div>
   )
