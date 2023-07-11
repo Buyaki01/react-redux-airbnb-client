@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useUpdateAccommodationMutation, useDeleteAccommodationMutation } from "../../features/accommodations/accommodationsApiSlice"
 import { useNavigate } from "react-router"
+import FeaturesSection from "./FeaturesSection"
 
 const EditAccommodationFormPage = ({ accommodation }) => {
   const [updateAccommodation, {
@@ -15,6 +16,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
   const [title, setTitle] = useState(accommodation.title)
   const [address, setAddress] = useState(accommodation.address)
   const [description, setDescription] = useState(accommodation.description)
+  const [features, setFeatures] = useState(accommodation.features)
   const [extraInfo, setExtraInfo] = useState(accommodation.extraInfo)
   const [checkIn, setCheckIn] = useState(accommodation.checkIn)
   const [checkOut, setCheckOut] = useState(accommodation.checkOut)
@@ -26,6 +28,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
       setTitle('')
       setAddress('')
       setDescription('')
+      setFeatures('')
       setExtraInfo('')
       setCheckIn('')
       setCheckOut('')
@@ -79,7 +82,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
             onChange={e => setDescription(e.target.value)}
           />
 
-          {/* <FeaturesSection features={features} setFeatures={setFeatures}/> */}
+          <FeaturesSection features={features} setFeatures={setFeatures}/>
 
           <label htmlFor="extraInfo" className="text-2xl mt-4">Extra Info</label>
           <p id="extraInfo-description" className="text-gray-500 text-sm my-2">Kindly add extra information about your accommodation i.e house rules</p>
