@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useAddNewAccommodationMutation } from "../../features/accommodations/accommodationsApiSlice"
 import { useEffect, useState } from "react"
+import FeaturesSection from "./FeaturesSection"
 
 const CreateNewAccommodation = () => {
 
@@ -16,6 +17,7 @@ const CreateNewAccommodation = () => {
   const [title, setTitle] = useState('')
   const [address, setAddress] = useState('')
   const [description, setDescription] = useState('')
+  const [features, setFeatures] = useState([])
   const [extraInfo, setExtraInfo] = useState('')
   const [checkIn, setCheckIn] = useState(14)
   const [checkOut, setCheckOut] = useState(11)
@@ -27,6 +29,7 @@ const CreateNewAccommodation = () => {
       setTitle('')
       setAddress('')
       setDescription('')
+      setFeatures()
       setExtraInfo('')
       setCheckIn('')
       setCheckOut('')
@@ -83,7 +86,7 @@ const CreateNewAccommodation = () => {
             onChange={e => setDescription(e.target.value)}
           />
 
-          {/* <FeaturesSection features={features} setFeatures={setFeatures}/> */}
+          <FeaturesSection features={features} setFeatures={setFeatures}/>
 
           <label htmlFor="extraInfo" className="text-2xl mt-4">Extra Info</label>
           <p id="extraInfo-description" className="text-gray-500 text-sm my-2">Kindly add extra information about your accommodation i.e house rules</p>
