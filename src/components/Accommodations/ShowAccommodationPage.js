@@ -6,7 +6,6 @@ import { useEffect, useState } from "react"
 import { useAddNewBookingMutation } from "../../features/Bookings/bookingsApiSlice"
 import { differenceInCalendarDays } from "date-fns"
 
-
 const ShowAccommodationPage = () => {
   const { id } = useParams()
   const [checkIn, setCheckIn] = useState('')
@@ -60,7 +59,8 @@ const ShowAccommodationPage = () => {
   const bookThisPlace = async (e) => {
     e.preventDefault()
     if (canSave) {
-      await addNewBooking({ id, checkIn, checkOut, noOfGuests, name, mobileNumber })
+      //Add userId in the body
+      await addNewBooking({ accommodationId: id, checkIn, checkOut, noOfGuests, name, mobileNumber, price: noOfNights * accommodation.price })
     }
   }
 
