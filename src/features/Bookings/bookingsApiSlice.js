@@ -1,4 +1,4 @@
-import { createEntityAdapter } from "@reduxjs/toolkit"
+import { createEntityAdapter, createSelector } from "@reduxjs/toolkit"
 import { apiSlice } from "../../app/api/apiSlice"
 
 const bookingsAdapter = createEntityAdapter({})
@@ -50,12 +50,15 @@ export const {
   useAddNewBookingMutation
 } = bookingsApiSlice
 
-export const selectBookingsResult = bookingsApiSlice.endpoints.getBookings.select(
-  (state) => state.data //Only selects the data property from the state using the select() method
+export const selectBookingsResult = bookingsApiSlice.endpoints.getBookings.select()
+
+const selectBookingsData = createSelector(
+  selectBookingsResult,
+  bookingsResult => bookingsResult.data
 )
 
 export const {
   selectAll: selectAllBookings,
   selectById: selectBookingById,
   selectIds: selectBookingIds
-} = bookingsAdapter.getSelectors(state => selectBookingsResult(state) ?? initialState)
+} = bookingsAdapter.getSelectors(state => selectBookingsData(state) ?? initialState)

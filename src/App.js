@@ -4,7 +4,7 @@ import AccommodationsPage from "./components/Accommodations/AccommodationsPage"
 import LoginPage from "./features/auth/LoginPage"
 import RegisterPage from "./components/RegisterPage"
 import ProfilePage from "./components/ProfilePage"
-import BookingsPage from "./components/Bookings/BookingsPage"
+import MyBookingsPage from "./components/Bookings/MyBookingsPage"
 import ShowBookingPage from "./components/Bookings/ShowBookingPage"
 import MyAccommodationsPage from "./components/Accommodations/MyAccommodationsPage"
 import CreateNewAccommodation from "./components/Accommodations/CreateNewAccommodation"
@@ -25,8 +25,8 @@ function App() {
           <Route element={<PersistLogin />}>
             <Route element={<Prefetch/>}>
               <Route path='/profile' element={<ProfilePage/>}/>
-              <Route path='/mybookings' element={<BookingsPage/>}/>
-              <Route path='/mybooking/:id' element={<ShowBookingPage/>}/>
+              <Route path='/mybookings' element={<MyBookingsPage/>}/>
+              <Route path='/booking/:id' element={<ShowBookingPage/>}/>
               <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
               <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
               <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
