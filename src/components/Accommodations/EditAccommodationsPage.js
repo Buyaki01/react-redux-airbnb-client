@@ -1,14 +1,24 @@
 import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { selectAccommodationById } from "../../features/accommodations/accommodationsApiSlice"
+import { useGetAccommodationsQuery } from "../../features/accommodations/accommodationsApiSlice"
 import EditAccommodationFormPage from "./EditAccommodationFormPage"
+import { useEffect } from "react"
 
 const EditAccommodationsPage = () => {
   const { id } = useParams()
 
-  const accommodation = useSelector(state => selectAccommodationById(state, id))
+  const { accommodation } = useGetAccommodationsQuery("accommodationsList", {
+    selectFromResult: ({ data }) => ({
+      accommodation: data?.entities[id]
+    }),
+  })
 
-  const content = accommodation ? <EditAccommodationFormPage accommodation={accommodation} /> : <p>Loading...</p>
+  useEffect(() => {
+    
+  }, [accommodation])
+
+  if (!accommodation) return <p>Loading...</p>
+
+  const content = <EditAccommodationFormPage accommodation={accommodation} /> 
 
   return content
 }

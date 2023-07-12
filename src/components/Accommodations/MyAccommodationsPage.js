@@ -28,6 +28,7 @@ const MyAccommodationsPage = () => {
       <div className="mt-4">
         {ownersAccommodation.length > 0 && ownersAccommodation.map(accommodation => (
           <Link 
+            key={accommodation.id}
             to={`/accommodations/edit/${accommodation.id}`}
             className="flex cursor-pointer gap-4 bg-gray-100 p-4 mb-4 rounded-2xl" 
           >

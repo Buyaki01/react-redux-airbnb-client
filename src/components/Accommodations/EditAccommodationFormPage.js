@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useUpdateAccommodationMutation, useDeleteAccommodationMutation } from "../../features/accommodations/accommodationsApiSlice"
 import { useNavigate } from "react-router"
+import FeaturesSection from "./FeaturesSection"
 
 const EditAccommodationFormPage = ({ accommodation }) => {
   const [updateAccommodation, {
@@ -15,6 +16,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
   const [title, setTitle] = useState(accommodation.title)
   const [address, setAddress] = useState(accommodation.address)
   const [description, setDescription] = useState(accommodation.description)
+  const [features, setFeatures] = useState(accommodation.features)
   const [extraInfo, setExtraInfo] = useState(accommodation.extraInfo)
   const [checkIn, setCheckIn] = useState(accommodation.checkIn)
   const [checkOut, setCheckOut] = useState(accommodation.checkOut)
@@ -26,6 +28,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
       setTitle('')
       setAddress('')
       setDescription('')
+      setFeatures('')
       setExtraInfo('')
       setCheckIn('')
       setCheckOut('')
@@ -36,9 +39,13 @@ const EditAccommodationFormPage = ({ accommodation }) => {
   }, [isSuccess, navigate])
 
   const onSaveAccommodationClicked = async (e) => {
-    await updateAccommodation({ id: accommodation.id, 
-      title, address, description, extraInfo, checkIn, checkOut, maxGuests, price
-    })
+    try {
+      await updateAccommodation({
+        id: accommodation.id, title, address, description, features, extraInfo, checkIn, checkOut, maxGuests, price
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
