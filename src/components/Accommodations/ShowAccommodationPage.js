@@ -5,9 +5,13 @@ import { useGetAccommodationsQuery } from "../../features/accommodations/accommo
 import { useEffect, useState } from "react"
 import { useAddNewBookingMutation } from "../../features/Bookings/bookingsApiSlice"
 import { differenceInCalendarDays } from "date-fns"
+import useAuth from "../../hooks/useAuth"
 
 const ShowAccommodationPage = () => {
-  const { id } = useParams()
+  const { id: accommodationId } = useParams()
+
+  const { id: userId } = useAuth() 
+
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [noOfGuests, setNoOfGuests] = useState(1)
@@ -25,7 +29,7 @@ const ShowAccommodationPage = () => {
 
   const { accommodation } = useGetAccommodationsQuery("accommodationsList", {
     selectFromResult: ({ data }) => ({
-      accommodation: data?.entities[id]
+      accommodation: data?.entities[accommodationId]
     })
   })
 
@@ -59,8 +63,7 @@ const ShowAccommodationPage = () => {
   const bookThisPlace = async (e) => {
     e.preventDefault()
     if (canSave) {
-      //Add userId in the body
-      await addNewBooking({ accommodationId: id, checkIn, checkOut, noOfGuests, name, mobileNumber, price: noOfNights * accommodation.price })
+      await addNewBooking({ accommodationId: accommodationId, userId: userId, checkIn, checkOut, noOfGuests, name, mobileNumber, price: noOfNights * accommodation.price })
     }
   }
 
