@@ -44,7 +44,7 @@ const ShowAccommodationPage = () => {
       setNoOfGuests('')
       setName('')
       setMobileNumber('')
-      navigate('/mybookings')
+      navigate(`/mybookings`)
     }
   }, [isSuccess, navigate])
 
