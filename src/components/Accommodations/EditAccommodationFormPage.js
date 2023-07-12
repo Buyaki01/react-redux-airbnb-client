@@ -39,9 +39,13 @@ const EditAccommodationFormPage = ({ accommodation }) => {
   }, [isSuccess, navigate])
 
   const onSaveAccommodationClicked = async (e) => {
-    await updateAccommodation({ id: accommodation.id, 
-      title, address, description, features, extraInfo, checkIn, checkOut, maxGuests, price
-    })
+    try {
+      await updateAccommodation({
+        id: accommodation.id, title, address, description, features, extraInfo, checkIn, checkOut, maxGuests, price
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -82,7 +86,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
             onChange={e => setDescription(e.target.value)}
           />
 
-          <FeaturesSection features={features} setFeatures={setFeatures}/>
+          {/* <FeaturesSection features={features} setFeatures={setFeatures}/> */}
 
           <label htmlFor="extraInfo" className="text-2xl mt-4">Extra Info</label>
           <p id="extraInfo-description" className="text-gray-500 text-sm my-2">Kindly add extra information about your accommodation i.e house rules</p>

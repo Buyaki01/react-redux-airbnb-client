@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom"
 import { useAddNewAccommodationMutation } from "../../features/accommodations/accommodationsApiSlice"
 import { useEffect, useState } from "react"
 import FeaturesSection from "./FeaturesSection"
+import useAuth from "../../hooks/useAuth"
 
 const CreateNewAccommodation = () => {
+
+  const { id: userId } = useAuth() 
 
   const [addNewAccommodation, {
     isLoading,
@@ -44,7 +47,7 @@ const CreateNewAccommodation = () => {
   const onSaveUserClicked = async (e) => {
     e.preventDefault()
     if (canSave) {
-      await addNewAccommodation({ title, address, description, extraInfo, checkIn, checkOut, maxGuests, price })
+      await addNewAccommodation({ owner: userId, title, address, description, features, extraInfo, checkIn, checkOut, maxGuests, price })
     }
   }
 
