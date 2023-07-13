@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth"
 import { useSelector } from "react-redux"
 import { selectAllBookings } from "../../features/Bookings/bookingsApiSlice"
 
-const BookingsPage = () => {
+const MyBookingsPage = () => {
   
   const { id: userId } = useAuth()
 
@@ -50,4 +50,4 @@ const BookingsPage = () => {
   )
 }
 
-export default BookingsPage
+export default MyBookingsPage
