@@ -25,7 +25,7 @@ function App() {
           <Route element={<PersistLogin />}>
             <Route element={<Prefetch/>}>
               <Route path='/profile' element={<ProfilePage/>}/>
-              <Route path='/mybookings' element={<BookingsPage/>}/>
+              <Route path='/mybookings' element={<MyBookingsPage/>}/>
               <Route path='/booking/:id' element={<ShowBookingPage/>}/>
               <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
               <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
