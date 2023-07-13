@@ -1,8 +1,35 @@
 import BookingDates from "./BookingDates"
 import AddressLink from "../Accommodations/AddressLink"
-import AccommodationGallery from "../Accommodations/AccommodationGallery"
+import AccommodationGallery from "../Accommodations/AccommodationGallery" 
+import { useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { selectAllBookings, useGetBookingsQuery } from "../../features/Bookings/bookingsApiSlice"
+import useAuth from "../../hooks/useAuth"
+import { useSelector } from "react-redux"
 
 const ShowBookingPage = () => {
+  const { id: userId } = useAuth()
+  
+  const bookings = useSelector(selectAllBookings)
+
+  const ownersBookings = bookings.filter((booking) => booking.userId === userId)
+
+  console.log(ownersBookings)
+
+  // const matchBookingIdWithOwner = ownersBookings.filter((booking) => booking.)
+
+  const { id: bookingId } = useParams()
+
+  const { booking } = useGetBookingsQuery("bookingsList", {
+    selectFromResult: ({ data }) => ({
+      booking: data?.entities[bookingId]
+    })
+  })
+
+  useEffect(() => {
+    console.log(booking)
+  }, [booking])
+
   return (
     <div className="my-8">
       <h1 className="text-3xl">title</h1>
@@ -16,7 +43,7 @@ const ShowBookingPage = () => {
         </div>
         <div className="bg-primary p-6 text-white rounded-2xl">
           <div>Total Price</div>
-          <div className="text-2xl">price</div>
+          <div className="text-2xl">${booking.price}</div>
         </div>
       </div>
 
