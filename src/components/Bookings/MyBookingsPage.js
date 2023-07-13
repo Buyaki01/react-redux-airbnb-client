@@ -3,6 +3,7 @@ import BookingDates from "./BookingDates"
 import useAuth from "../../hooks/useAuth"
 import { useSelector } from "react-redux"
 import { selectAllBookings } from "../../features/Bookings/bookingsApiSlice"
+import { useEffect } from "react"
 
 const BookingsPage = () => {
   
@@ -30,7 +31,7 @@ const BookingsPage = () => {
                 />
               </div>
               <div className="py-3 pr-3 grow">
-                <h2 className="text-xl">booking.accomodationId.title</h2>
+                <h2 className="text-xl">{booking.accomodationId && booking.accomodationId.title}</h2>
                 <div className="text-xl">
 
                   <BookingDates booking={booking} />
