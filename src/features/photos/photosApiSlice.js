@@ -9,7 +9,7 @@ export const photosApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
     addPhotoByLink: builder.mutation({
       query: initialUserData => ({
-        url: '/photo/link',
+        url: '/upload/photo/link',
         method: 'POST',
         body: {
           ...initialUserData,
