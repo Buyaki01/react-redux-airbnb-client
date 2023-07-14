@@ -3,6 +3,7 @@ import { useAddNewAccommodationMutation } from "../../features/accommodations/ac
 import { useEffect, useState } from "react"
 import FeaturesSection from "./FeaturesSection"
 import useAuth from "../../hooks/useAuth"
+import PhotosSection from "./PhotosSection"
 
 const CreateNewAccommodation = () => {
 
@@ -10,15 +11,14 @@ const CreateNewAccommodation = () => {
 
   const [addNewAccommodation, {
     isLoading,
-    isSuccess,
-    isError,
-    error
+    isSuccess
   }] = useAddNewAccommodationMutation()
 
   const navigate = useNavigate()
 
   const [title, setTitle] = useState('')
   const [address, setAddress] = useState('')
+  const [addPhoto, setAddPhoto] = useState([])
   const [description, setDescription] = useState('')
   const [features, setFeatures] = useState([])
   const [extraInfo, setExtraInfo] = useState('')
@@ -47,7 +47,7 @@ const CreateNewAccommodation = () => {
   const onSaveUserClicked = async (e) => {
     e.preventDefault()
     if (canSave) {
-      await addNewAccommodation({ owner: userId, title, address, description, features, extraInfo, checkIn, checkOut, maxGuests, price })
+      await addNewAccommodation({ owner: userId, title, address, description, addPhoto, features, extraInfo, checkIn, checkOut, maxGuests, price })
     }
   }
 
@@ -77,7 +77,7 @@ const CreateNewAccommodation = () => {
             onChange={e => setAddress(e.target.value)}
           />
           
-          {/* <PhotosSection addPhoto={addPhoto} setAddPhoto={setAddPhoto}/> */}
+          <PhotosSection addPhoto={addPhoto} setAddPhoto={setAddPhoto}/>
 
           <label htmlFor="description" className="text-2xl mt-4">Description</label>
           <p id="accommodation-description" className="text-gray-500 text-sm my-2"> Kindly describe your accommodation in depth</p>
