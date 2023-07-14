@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { useAddPhotoByLinkMutation } from "../../features/photos/photosApiSlice"
+import { useAddPhotoByLinkMutation, useAddPhotoFromDeviceMutation } from "../../features/photos/photosApiSlice"
 
 const PhotosSection = ({addPhoto, setAddPhoto}) => {
 
   const [addPhotoByLink] = useAddPhotoByLinkMutation()
+
+  const [addPhotoFromDevice] = useAddPhotoFromDeviceMutation()
  
   const [photoLink, setPhotoLink] = useState('')
 
@@ -17,15 +19,22 @@ const PhotosSection = ({addPhoto, setAddPhoto}) => {
     setPhotoLink('')
   }
 
-  // const uploadPhoto = async (e) => {
-  //   const file = e.target.files
-  //   const formData = new FormData()
-  //   for (let i = 0; i < file.length; i++) {
-  //     formData.append('file', file[i])
-  //   }
-  //   const { data: filenames } = await axios.post('/upload-photo', formData)
-  //   setAddPhoto(prev => [...prev, ...filenames])
-  // }
+  const uploadPhoto = async (e) => {
+    const file = e.target.files
+    const formData = new FormData()
+    for (let i = 0; i < file.length; i++) {
+      formData.append('file', file[i])
+    }
+    
+    try {
+      const { data: filenames } = await addPhotoFromDevice({ formData })
+      setAddPhoto(prev => [...prev, ...filenames])
+    } catch (error) {
+      // Handle the error if the upload fails
+      console.log('Failed to upload photo:', error)
+    }
+    
+  }
 
   // const deletePhoto = (e, filename) => {
   //   e.preventDefault()
@@ -74,13 +83,13 @@ const PhotosSection = ({addPhoto, setAddPhoto}) => {
             </div>
           )) }
 
-        {/* <label className="h-32 cursor-pointer flex items-center gap-1 justify-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
+        <label className="h-32 cursor-pointer flex items-center gap-1 justify-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
           <input type="file" className="hidden" multiple onChange={uploadPhoto} />
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
           </svg>
           Upload
-        </label> */}
+        </label>
       </div>
     </>
 
