@@ -7,9 +7,9 @@ const initialState = photosAdapter.getInitialState()
 
 export const photosApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
-    addPhotoFromDevice: builder.mutation({
+    addPhotoByLink: builder.mutation({
       query: initialUserData => ({
-        url: '/upload/photo',
+        url: '/upload/photo/link',
         method: 'POST',
         body: {
           ...initialUserData,
@@ -23,5 +23,5 @@ export const photosApiSlice = apiSlice.injectEndpoints({
 })
 
 export const {
-  useAddPhotoFromDeviceMutation,
+  useAddPhotoByLinkMutation,
 } = photosApiSlice

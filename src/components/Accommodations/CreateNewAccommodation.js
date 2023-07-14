@@ -31,6 +31,7 @@ const CreateNewAccommodation = () => {
     if (isSuccess) {
       setTitle('')
       setAddress('')
+      setAddPhoto([])
       setDescription('')
       setFeatures()
       setExtraInfo('')
@@ -47,7 +48,7 @@ const CreateNewAccommodation = () => {
   const onSaveUserClicked = async (e) => {
     e.preventDefault()
     if (canSave) {
-      await addNewAccommodation({ owner: userId, title, address, description, addPhoto, features, extraInfo, checkIn, checkOut, maxGuests, price })
+      await addNewAccommodation({ owner: userId, title, address, addPhoto, description, features, extraInfo, checkIn, checkOut, maxGuests, price })
     }
   }
 
