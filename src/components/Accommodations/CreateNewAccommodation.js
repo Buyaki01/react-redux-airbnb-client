@@ -11,9 +11,7 @@ const CreateNewAccommodation = () => {
 
   const [addNewAccommodation, {
     isLoading,
-    isSuccess,
-    isError,
-    error
+    isSuccess
   }] = useAddNewAccommodationMutation()
 
   const navigate = useNavigate()
@@ -50,7 +48,7 @@ const CreateNewAccommodation = () => {
   const onSaveUserClicked = async (e) => {
     e.preventDefault()
     if (canSave) {
-      await addNewAccommodation({ owner: userId, title, address, photos: addPhoto, description, features, extraInfo, checkIn, checkOut, maxGuests, price })
+      await addNewAccommodation({ owner: userId, title, address, addPhoto, description, features, extraInfo, checkIn, checkOut, maxGuests, price })
     }
   }
 
