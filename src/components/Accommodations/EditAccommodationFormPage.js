@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useUpdateAccommodationMutation, useDeleteAccommodationMutation } from "../../features/accommodations/accommodationsApiSlice"
 import { useNavigate } from "react-router"
 import FeaturesSection from "./FeaturesSection"
+import PhotosSection from "./PhotosSection"
 
 const EditAccommodationFormPage = ({ accommodation }) => {
   const [updateAccommodation, {
@@ -15,6 +16,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
   
   const [title, setTitle] = useState(accommodation.title)
   const [address, setAddress] = useState(accommodation.address)
+  const [addPhoto, setAddPhoto] = useState([])
   const [description, setDescription] = useState(accommodation.description)
   const [features, setFeatures] = useState(accommodation.features)
   const [extraInfo, setExtraInfo] = useState(accommodation.extraInfo)
@@ -27,6 +29,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
     if (isSuccess) {
       setTitle('')
       setAddress('')
+      setAddPhoto([])
       setDescription('')
       setFeatures('')
       setExtraInfo('')
@@ -74,7 +77,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
             onChange={e => setAddress(e.target.value)}
           />
           
-          {/* <PhotosSection addPhoto={addPhoto} setAddPhoto={setAddPhoto}/> */}
+          <PhotosSection addPhoto={addPhoto} setAddPhoto={setAddPhoto}/>
 
           <label htmlFor="description" className="text-2xl mt-4">Description</label>
           <p id="accommodation-description" className="text-gray-500 text-sm my-2"> Kindly describe your accommodation in depth</p>

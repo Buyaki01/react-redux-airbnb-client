@@ -25,12 +25,12 @@ const MyBookingsPage = () => {
               <div className="w-48">
                 <img
                   className="object-cover"
-                  src=""
+                  // src={`http://localhost:5000/images/${booking.accommodationId.photos[0]}`}
                   alt=""
                 />
               </div>
               <div className="py-3 pr-3 grow">
-                <h2 className="text-xl">booking.accomodationId.title</h2>
+                {/* <h2 className="text-xl">{booking.accommodationId.title}</h2> */}
                 <div className="text-xl">
 
                   <BookingDates booking={booking} />
