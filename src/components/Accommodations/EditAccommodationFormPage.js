@@ -16,7 +16,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
   
   const [title, setTitle] = useState(accommodation.title)
   const [address, setAddress] = useState(accommodation.address)
-  const [addPhoto, setAddPhoto] = useState([])
+  const [addPhoto, setAddPhoto] = useState(accommodation.photos)
   const [description, setDescription] = useState(accommodation.description)
   const [features, setFeatures] = useState(accommodation.features)
   const [extraInfo, setExtraInfo] = useState(accommodation.extraInfo)
@@ -44,7 +44,7 @@ const EditAccommodationFormPage = ({ accommodation }) => {
   const onSaveAccommodationClicked = async (e) => {
     try {
       await updateAccommodation({
-        id: accommodation.id, title, address, description, features, extraInfo, checkIn, checkOut, maxGuests, price
+        id: accommodation.id, title, address, photos: addPhoto, description, features, extraInfo, checkIn, checkOut, maxGuests, price
       })
     } catch (error) {
       console.log(error)
