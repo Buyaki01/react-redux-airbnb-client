@@ -33,9 +33,12 @@ const MyAccommodationsPage = () => {
             className="flex cursor-pointer gap-4 bg-gray-100 p-4 mb-4 rounded-2xl" 
           >
             <div className="flex w-32 h-32 bg-gray-300 grow flex-shrink-0">
-              {/* {place.photos.length > 0 && ( */}
-                <img className="object-cover" src="" alt="" />
-              {/* )}  */}
+              {accommodation.photos.length > 0 && (
+                <img className="object-cover" 
+                  src={`http://localhost:5000/images/${accommodation.photos[0]}`}
+                  alt="" 
+                />
+              )}
             </div>
             <div className="flex-grow-0">
               <h2 className="text-xl">{accommodation.title}</h2>

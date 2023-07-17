@@ -1,42 +1,77 @@
-const AccommodationGallery = () => {
+import { useState } from "react"
+
+const AccommodationGallery = ({ accommodation }) => {
+
+  const [showAllPhotos, setShowAllPhotos] = useState(false)
+
+  if (!accommodation) {
+    return null
+  }
+
+  const {photos} = accommodation
+
+  if (showAllPhotos) {
+    return(
+      <div className="absolute inset-0 bg-white min-h-screen"> 
+        <div className="p-8 grid gap-4">
+          <div>
+            <button onClick={() => setShowAllPhotos(false)} className="fixed bg-transparent py-2 px-4 rounded-2xl"> 
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+          </div>
+          {accommodation?.photos?.length > 0 && accommodation.photos.map((photo, index) => (
+            <div key={index}> 
+              <img className="min-w-full object-cover" src={`http://localhost:5000/images/${photo}`} alt="" />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="relative">
       <div className="grid gap-2 grid-cols-[2fr_1fr] rounded-2xl overflow-hidden">
         <div>
-          {/* {photos?.[0] && ( */}
+          {photos?.[0] && (
             <div>
               <img 
-                // onClick={() => setShowAllPhotos(true)}
+                onClick={() => setShowAllPhotos(true)}
                 className="aspect-square cursor-pointer object-cover" 
-                src="" alt="" 
+                src={`http://localhost:5000/images/${accommodation.photos?.[0]}`} 
+                alt="" 
               />
             </div>
-          {/* )} */}
+          )}
         </div>
 
         <div className="grid">
-          {/* {photos?.[1] && ( */}
+          {photos?.[1] && (
             <img 
-              // onClick={() => setShowAllPhotos(true)} 
+              onClick={() => setShowAllPhotos(true)} 
               className="aspect-square cursor-pointer object-cover" 
-              src="" alt="" 
+              src={`http://localhost:5000/images/${accommodation.photos?.[1]}`}
+              alt="" 
             />
-          {/* )} */}
+          )}
 
           <div className="overflow-hidden">
-            {/* {photos?.[2] && ( */}
+            {photos?.[2] && (
               <img 
-                // onClick={() => setShowAllPhotos(true)} 
+                onClick={() => setShowAllPhotos(true)} 
                 className="aspect-square cursor-pointer object-cover relative top-2" 
-                src="" alt="" 
+                src={`http://localhost:5000/images/${accommodation.photos?.[2]}`} 
+                alt="" 
               />
-            {/* )} */}
+            )} 
           </div>
         </div>
       </div>
 
       <button 
-        // onClick={() => setShowAllPhotos(true)} 
+        onClick={() => setShowAllPhotos(true)} 
         className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl shadow shadow-md shadow-gray-500"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

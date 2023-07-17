@@ -11,7 +11,7 @@ const FeaturesSection = ({features, setFeatures}) => {
   return(
     <>
       <label htmlFor="features" className="text-2xl mt-4 mb-1">Features</label>
-      <p id="features-description" className="text-gray-500 text-sm my-2"> Kindly select all the features or perks that comes with your accomodation</p>
+      <p id="features-description" className="text-gray-500 text-sm my-2"> Kindly select all the features or perks that comes with your accommodation</p>
       <div id="features" aria-describedby="features-description" className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         <label className="flex gap-2 border p-4 rounded-2xl cursor-pointer">
           <input type="checkbox" checked={features.includes('wifi')} name='wifi' onChange={handleFeaturesCheckbox}/>
