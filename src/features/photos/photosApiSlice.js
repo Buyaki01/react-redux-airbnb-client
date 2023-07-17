@@ -15,12 +15,10 @@ export const photosApiSlice = apiSlice.injectEndpoints({
       ]
     }),
     addPhotoFromDevice: builder.mutation({
-      query: initialUserData => ({
+      query: (formData) => ({
         url: '/upload/photo',
         method: 'POST',
-        body: {
-          ...initialUserData,
-        }
+        body: formData,
       }),
       invalidatesTags: [
         { type: 'Photo', id: "LIST" }

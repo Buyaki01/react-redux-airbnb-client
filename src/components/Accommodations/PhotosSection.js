@@ -21,27 +21,20 @@ const PhotosSection = ({addPhoto, setAddPhoto}) => {
 
   const uploadPhoto = async (e) => {
     const files = e.target.files
-    
+  
     const formData = new FormData()
-    console.log(formData)
-
+  
     for (let i = 0; i < files.length; i++) {
       formData.append('photos', files[i])
     }
-    
+  
     try {
-      const uploadedPhoto = await addPhotoFromDevice({ formData })
-      // const { data: filenames } = await addPhotoFromDevice({ formData }) //{data: null}
-
-      console.log(uploadedPhoto)
+      const { data: uploadedFiles } = await addPhotoFromDevice(formData)
       
-      // setAddPhoto(prev => [...prev, ...filenames])
-
+      setAddPhoto((prev) => [...prev, ...uploadedFiles])
     } catch (error) {
-      // Handle the error if the upload fails
       console.log('Failed to upload photo:', error)
     }
-
   }
 
   // const deletePhoto = (e, filename) => {
