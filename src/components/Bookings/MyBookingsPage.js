@@ -18,7 +18,7 @@ const MyBookingsPage = () => {
   return (
     <div>
       <div>
-        {ownersBookings.length > 0 &&
+        {ownersBookings.length > 0 ? (
           ownersBookings.map((booking) => {
             const matchingAccommodation = accommodations.find(
               (accommodation) => accommodation.id === booking.accommodationId
@@ -52,7 +52,10 @@ const MyBookingsPage = () => {
                 </div>
               </Link>
             )
-          })}
+          })
+        ) : (
+          <p className="text-center text-xl"> No Booking Found </p>
+        )}
       </div>
     </div>
   )

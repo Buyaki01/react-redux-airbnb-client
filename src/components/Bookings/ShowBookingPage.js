@@ -1,8 +1,20 @@
 import BookingDates from "./BookingDates"
 import AddressLink from "../Accommodations/AddressLink"
 import AccommodationGallery from "../Accommodations/AccommodationGallery"
+import useAuth from "../../hooks/useAuth"
+import { useSelector } from "react-redux"
+import { selectAllBookings } from "../../features/Bookings/bookingsApiSlice"
 
 const ShowBookingPage = () => {
+
+  const { id: userId } = useAuth()
+
+  const bookings = useSelector(selectAllBookings)
+
+  const ownersBookings = bookings.find((booking) => booking.userId === userId)
+
+  console.log(ownersBookings)
+
   return (
     <div className="my-8">
       <h1 className="text-3xl">title</h1>
