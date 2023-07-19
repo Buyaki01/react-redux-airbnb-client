@@ -24,7 +24,7 @@ const MyBookingsPage = () => {
               (accommodation) => accommodation.id === booking.accommodationId
             )
 
-            return (
+            return matchingAccommodation ? (
               <Link
                 key={booking.id}
                 to={`/booking/${booking.id}`}
@@ -51,10 +51,13 @@ const MyBookingsPage = () => {
                   </div>
                 </div>
               </Link>
-            )
+            ) : null
           })
         ) : (
-          <p className="text-center text-xl"> No Booking Found </p>
+          <div>
+            <p className="text-center text-xl"> No Booking Found.</p>
+            <p>Want to book an airbnb? Kindly go to the <Link to={'/'} className="link-color">Home page</Link> and select an airbnb of your choice and book it </p>
+          </div>
         )}
       </div>
     </div>
