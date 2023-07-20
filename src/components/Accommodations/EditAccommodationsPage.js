@@ -16,7 +16,7 @@ const EditAccommodationsPage = () => {
     
   }, [accommodation])
 
-  if (!accommodation) return <p>Loading...</p>
+  if (!accommodation) return <p className="text-center">Loading...</p>
 
   const content = <EditAccommodationFormPage accommodation={accommodation} /> 
 

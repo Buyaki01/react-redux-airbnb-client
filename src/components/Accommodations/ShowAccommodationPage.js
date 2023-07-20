@@ -48,7 +48,7 @@ const ShowAccommodationPage = () => {
 
   // Wait for the data to load
   if (!accommodation) {
-    return <div>Loading...</div>;
+    return <div className="text-center">Loading...</div>
   }
 
   let noOfNights = 0

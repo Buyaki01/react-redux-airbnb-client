@@ -50,7 +50,7 @@ const LoginPage = () => {
 
   const errClass = errMsg ? "errmsg" : "offscreen"
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <p className="text-center">Loading...</p>
 
   return(
     <div className="mt-4 grow flex items-center justify-around">

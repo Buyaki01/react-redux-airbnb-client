@@ -16,7 +16,7 @@ const AccommodationsPage = () => {
   let content
 
   if (isLoading) {
-    content = <p>Loading...</p>
+    content = <p className="text-center">Loading...</p>
   }
 
   if (isError) {

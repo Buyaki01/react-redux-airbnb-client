@@ -49,7 +49,7 @@ const PersistLogin = () => {
   if (!persist) { // persist: no
     content = <Outlet />
   } else if (isLoading) { //persist: yes, token: no
-    content = <p>Loading...</p>
+    content = <p className="text-center">Loading...</p>
   } else if (isError) { //persist: yes, token: no
     content = (
       <p className='errmsg text-center'>
