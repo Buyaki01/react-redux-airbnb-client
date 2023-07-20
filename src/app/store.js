@@ -10,7 +10,7 @@ export const store = configureStore({
   },
   middleware: getDefaultMiddleware => 
     getDefaultMiddleware().concat(apiSlice.middleware),
-  devTools: true
+  devTools: false
 })
 
 setupListeners(store.dispatch)//Without using setupListeners() or a similar mechanism, if multiple users are using the app simultaneously and one user makes changes that should be reflected on other users' screens, those changes might not be automatically propagated to other users.
