@@ -32,7 +32,7 @@ const ProfilePage = () => {
           <button
             className="primary max-w-sm mt-3"
             title="Logout"
-            onClick={handleLogout}
+            onClick={sendLogout}
           >
             Logout
           </button>
