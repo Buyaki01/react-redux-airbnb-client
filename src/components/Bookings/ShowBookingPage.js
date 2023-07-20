@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
+import { selectAllBookings } from "../../features/Bookings/bookingsApiSlice"
 
 const ShowBookingPage = () => {
 
@@ -12,30 +13,31 @@ const ShowBookingPage = () => {
 
   const { bookingId, accommodationId } = useParams()
 
-  console.log(bookingId)
+  const accommodations = useSelector(selectAllAccommodations)
+  const bookings = useSelector(selectAllBookings)
 
-  console.log(accommodationId)
+  const accommodation = accommodations.find((accommodation) => accommodation._id === accommodationId)
 
-  // const accommodation = accommodations.find((accommodation) => accommodation._id === ownersBookings.accommodationId)
+  const booking = bookings.find((booking) => booking._id === bookingId && booking.userId === userId)
 
   return (
     <div className="my-8">
-      <h1 className="text-3xl">title</h1>
+      <h1 className="text-3xl">{accommodation.title}</h1>
 
-      {/* <AddressLink accommodation={booking.accommodationId} className="my-2 block" /> */}
+      <AddressLink accommodation={accommodation} className="my-2 block" /> 
 
       <div className="bg-gray-200 p-6 my-6 rounded-2xl flex items-center justify-between">
         <div>
           <h2 className="text-2xl mb-2">Your booking information:</h2>
-          {/* <BookingDates booking={booking} /> */}
+          <BookingDates booking={booking} />
         </div>
         <div className="bg-primary p-6 text-white rounded-2xl">
           <div>Total Price</div>
-          <div className="text-2xl">price</div>
+          <div className="text-2xl">{booking.price}</div>
         </div>
       </div>
 
-      {/* <AccommodationGallery accommodation={booking.accommodationId} /> */}
+      <AccommodationGallery accommodation={accommodation} />
     </div>
   )
 }
