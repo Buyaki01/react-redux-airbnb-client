@@ -26,7 +26,7 @@ function App() {
             <Route element={<Prefetch/>}>
               <Route path='/profile' element={<ProfilePage/>}/>
               <Route path='/mybookings' element={<MyBookingsPage/>}/>
-              <Route path='/booking/:id' element={<ShowBookingPage/>}/>
+              <Route path='/booking/:bookingId/:accommodationId' element={<ShowBookingPage/>}/>
               <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
               <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
               <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>

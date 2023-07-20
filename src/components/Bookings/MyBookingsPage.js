@@ -27,7 +27,7 @@ const MyBookingsPage = () => {
             return matchingAccommodation ? (
               <Link
                 key={booking.id}
-                to={`/booking/${booking.id}`}
+                to={`/booking/${booking.id}/${matchingAccommodation.id}`}
                 className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mt-3"
               >
                 <div className="w-48">

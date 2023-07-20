@@ -3,7 +3,6 @@ import AddressLink from "../Accommodations/AddressLink"
 import AccommodationGallery from "../Accommodations/AccommodationGallery"
 import useAuth from "../../hooks/useAuth"
 import { useSelector } from "react-redux"
-import { useGetBookingByIdQuery } from "../../features/Bookings/bookingsApiSlice" 
 import { useParams } from "react-router-dom"
 import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
 
@@ -11,11 +10,11 @@ const ShowBookingPage = () => {
 
   const { id: userId } = useAuth()
 
-  const { id: bookingId } = useParams()
+  const { bookingId, accommodationId } = useParams()
 
-  const { data: booking, isLoading, isSuccess, isError, error } = useGetBookingByIdQuery(bookingId)
+  console.log(bookingId)
 
-  console.log(booking)
+  console.log(accommodationId)
 
   // const accommodation = accommodations.find((accommodation) => accommodation._id === ownersBookings.accommodationId)
 
