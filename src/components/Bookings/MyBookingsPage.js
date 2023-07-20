@@ -1,15 +1,20 @@
+import React from "react"
 import { Link } from "react-router-dom"
 import BookingDates from "./BookingDates"
 import useAuth from "../../hooks/useAuth"
 import { useSelector } from "react-redux"
-import { selectAllBookings } from "../../features/Bookings/bookingsApiSlice"
+import {
+  selectAllBookings,
+  useGetBookingsQuery,
+} from "../../features/Bookings/bookingsApiSlice"
 import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
 
 const MyBookingsPage = () => {
-  
   const { id: userId } = useAuth()
 
   const accommodations = useSelector(selectAllAccommodations)
+
+  const { data: allBookings, isLoading } = useGetBookingsQuery()
 
   const bookings = useSelector(selectAllBookings)
 
@@ -18,7 +23,9 @@ const MyBookingsPage = () => {
   return (
     <div>
       <div>
-        {ownersBookings.length > 0 ? (
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : ownersBookings.length > 0 ? (
           ownersBookings.map((booking) => {
             const matchingAccommodation = accommodations.find(
               (accommodation) => accommodation.id === booking.accommodationId
@@ -54,8 +61,8 @@ const MyBookingsPage = () => {
             ) : null
           })
         ) : (
-          <div>
-            <p className="text-center text-xl"> No Booking Found.</p>
+          <div className="text-center">
+            <p className="text-xl"> No Booking Found.</p>
             <p>Want to book an airbnb? Kindly go to the <Link to={'/'} className="link-color">Home page</Link> and select an airbnb of your choice and book it </p>
           </div>
         )}
