@@ -39,7 +39,7 @@ const ProfilePage = () => {
         </div>
       ) : (
         <div className="text-center">
-          <h5>Not logged in</h5>
+          <h5>Not yet logged in</h5>
           <p>Please <Link to={'/login'} className="link-color">log in</Link> to view your profile.</p>
         </div>
       )}

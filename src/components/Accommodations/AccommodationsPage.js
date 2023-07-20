@@ -33,7 +33,7 @@ const AccommodationsPage = () => {
           return (
             <Link key={id} to={`/accommodations/${id}`}>
               <div className="bg-gray-500 mb-2 rounded-2xl flex">
-                <img className="rounded-2xl object-cover aspect-square" src={`http://localhost:5000/images/${accommodation.photos?.[0]}`} alt={accommodation.title} />
+                <img className="rounded-2xl object-cover aspect-square" src={`https://airbnb-app-server.onrender.com/images/${accommodation.photos?.[0]}`} alt={accommodation.title} />
               </div>
               <h2 className="font-semibold">{accommodation.address}</h2>
               <h3 className="text-gray-700">{accommodation.title}</h3>

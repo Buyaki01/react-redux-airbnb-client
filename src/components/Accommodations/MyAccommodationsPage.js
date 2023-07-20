@@ -35,7 +35,7 @@ const MyAccommodationsPage = () => {
             <div className="flex w-32 h-32 bg-gray-300 grow flex-shrink-0">
               {accommodation.photos.length > 0 && (
                 <img className="object-cover" 
-                  src={`http://localhost:5000/images/${accommodation.photos[0]}`}
+                  src={`https://airbnb-app-server.onrender.com/images/${accommodation.photos[0]}`}
                   alt="" 
                 />
               )}

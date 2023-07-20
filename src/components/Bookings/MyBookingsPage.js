@@ -14,7 +14,7 @@ const MyBookingsPage = () => {
 
   const accommodations = useSelector(selectAllAccommodations)
 
-  const { data: allBookings, isLoading } = useGetBookingsQuery()
+  const { isLoading } = useGetBookingsQuery()
 
   const bookings = useSelector(selectAllBookings)
 
@@ -40,7 +40,7 @@ const MyBookingsPage = () => {
                 <div className="w-48">
                   <img
                     className="object-cover"
-                    src={`http://localhost:5000/images/${matchingAccommodation.photos[0]}`}
+                    src={`https://airbnb-app-server.onrender.com/images/${matchingAccommodation.photos[0]}`}
                     alt=""
                   />
                 </div>

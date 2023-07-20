@@ -23,7 +23,7 @@ const AccommodationGallery = ({ accommodation }) => {
           </div>
           {accommodation?.photos?.length > 0 && accommodation.photos.map((photo, index) => (
             <div key={index}> 
-              <img className="min-w-full object-cover" src={`http://localhost:5000/images/${photo}`} alt="" />
+              <img className="min-w-full object-cover" src={`https://airbnb-app-server.onrender.com/images/${photo}`} alt="" />
             </div>
           ))}
         </div>
@@ -40,7 +40,7 @@ const AccommodationGallery = ({ accommodation }) => {
               <img 
                 onClick={() => setShowAllPhotos(true)}
                 className="aspect-square cursor-pointer object-cover" 
-                src={`http://localhost:5000/images/${accommodation.photos?.[0]}`} 
+                src={`https://airbnb-app-server.onrender.com/images/${accommodation.photos?.[0]}`} 
                 alt="" 
               />
             </div>
@@ -52,7 +52,7 @@ const AccommodationGallery = ({ accommodation }) => {
             <img 
               onClick={() => setShowAllPhotos(true)} 
               className="aspect-square cursor-pointer object-cover" 
-              src={`http://localhost:5000/images/${accommodation.photos?.[1]}`}
+              src={`https://airbnb-app-server.onrender.com/images/${accommodation.photos?.[1]}`}
               alt="" 
             />
           )}
@@ -62,7 +62,7 @@ const AccommodationGallery = ({ accommodation }) => {
               <img 
                 onClick={() => setShowAllPhotos(true)} 
                 className="aspect-square cursor-pointer object-cover relative top-2" 
-                src={`http://localhost:5000/images/${accommodation.photos?.[2]}`} 
+                src={`https://airbnb-app-server.onrender.com/images/${accommodation.photos?.[2]}`} 
                 alt="" 
               />
             )} 
