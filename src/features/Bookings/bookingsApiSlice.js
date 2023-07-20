@@ -30,25 +30,28 @@ export const bookingsApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: 'Booking', id: 'LIST'}]
       }
     }),
-    getBooking: builder.query({
+    getBookingById: builder.query({
       queryFn: (bookingId) => {
-        console.log(bookingId)
         return {
           url: `/bookings/${bookingId}`,
           validateStatus: (response, result) => {
             return response.status === 200 && !result.isError
           },
-        };
+        }
       },
-      transformResponse: (responseData) => {
-        console.log(responseData)
-        const loadedBooking = { ...responseData, id: responseData._id }
-        return bookingsAdapter.setOne(initialState, loadedBooking)
+      transformResponse: (responseData, bookingId) => {
+        const loadedBooking = { ...responseData, id: bookingId }
+        
+        return bookingsAdapter.upsertOne(initialState, loadedBooking)
       },
-      providesTags: (result, error, id) => [
-        { type: "Booking", id: id }
-      ]
-    }),
+      providesTags: (result, error, bookingId) => {
+        if (result?.id) {
+          return [{ type: 'Booking', id: bookingId }]
+        } else {
+          return [{ type: 'Booking', id: 'LIST' }]
+        }
+      },
+    }),    
     addNewBooking: builder.mutation({
       query: initialBookingData => ({
         url: '/bookings',
@@ -66,7 +69,7 @@ export const bookingsApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetBookingsQuery,
-  useGetBookingQuery,
+  useGetBookingByIdQuery,
   useAddNewBookingMutation
 } = bookingsApiSlice
 
