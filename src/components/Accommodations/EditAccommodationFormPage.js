@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react"
-import { useUpdateAccommodationMutation, useDeleteAccommodationMutation } from "../../features/accommodations/accommodationsApiSlice"
+import { useUpdateAccommodationMutation } from "../../features/accommodations/accommodationsApiSlice"
 import { useNavigate } from "react-router"
 import FeaturesSection from "./FeaturesSection"
 import PhotosSection from "./PhotosSection"
 
 const EditAccommodationFormPage = ({ accommodation }) => {
   const [updateAccommodation, {
-    isLoading,
-    isSuccess,
-    isError,
-    error
+    isSuccess
   }] = useUpdateAccommodationMutation()
 
   const navigate = useNavigate()

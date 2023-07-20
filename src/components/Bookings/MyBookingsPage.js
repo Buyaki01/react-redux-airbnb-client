@@ -10,7 +10,7 @@ import {
 import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
 
 const MyBookingsPage = () => {
-  const { id: userId } = useAuth()
+  const { id: userId, isAuthenticated } = useAuth()
 
   const accommodations = useSelector(selectAllAccommodations)
 
@@ -24,7 +24,11 @@ const MyBookingsPage = () => {
     <div>
       <div>
         {isLoading ? (
-          <p>Loading...</p>
+          <p className="text-center">Loading...</p>
+        ): !isAuthenticated ? (
+          <div className="text-center">
+            <p className="text-xl">Please <Link to={'/'} className="link-color">log in</Link> to view your bookings</p>
+          </div>
         ) : ownersBookings.length > 0 ? (
           ownersBookings.map((booking) => {
             const matchingAccommodation = accommodations.find(
