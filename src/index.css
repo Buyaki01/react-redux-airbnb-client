@@ -18,6 +18,10 @@ button.primary{
   @apply bg-primary p-2 w-full text-white rounded-2xl
 }
 
+.link-color{
+  color: #F5385D;
+}
+
 .errmsg {
   display: inline-block;
   background-color: var(--TABLE-BGCOLOR);

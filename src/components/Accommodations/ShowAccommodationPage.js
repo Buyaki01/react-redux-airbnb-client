@@ -22,9 +22,7 @@ const ShowAccommodationPage = () => {
 
   const [addNewBooking, {
     isLoading,
-    isSuccess,
-    isError,
-    error
+    isSuccess
   }] = useAddNewBookingMutation()
 
   const { accommodation } = useGetAccommodationsQuery("accommodationsList", {

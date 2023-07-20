@@ -1,50 +1,71 @@
+import React from "react"
 import { Link } from "react-router-dom"
 import BookingDates from "./BookingDates"
 import useAuth from "../../hooks/useAuth"
 import { useSelector } from "react-redux"
-import { selectAllBookings } from "../../features/Bookings/bookingsApiSlice"
+import {
+  selectAllBookings,
+  useGetBookingsQuery,
+} from "../../features/Bookings/bookingsApiSlice"
+import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
 
 const MyBookingsPage = () => {
-  
   const { id: userId } = useAuth()
+
+  const accommodations = useSelector(selectAllAccommodations)
+
+  const { data: allBookings, isLoading } = useGetBookingsQuery()
 
   const bookings = useSelector(selectAllBookings)
 
   const ownersBookings = bookings.filter((booking) => booking.userId === userId)
 
-  return(
+  return (
     <div>
       <div>
-        {ownersBookings.length > 0 &&
-          ownersBookings.map((booking) => (
-            <Link
-              key={booking.id}
-              to={`/booking/${booking.id}`}
-              className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mt-3"
-            >
-              <div className="w-48">
-                <img
-                  className="object-cover"
-                  // src={`http://localhost:5000/images/${booking.accommodationId.photos[0]}`}
-                  alt=""
-                />
-              </div>
-              <div className="py-3 pr-3 grow">
-                {/* <h2 className="text-xl">{booking.accommodationId.title}</h2> */}
-                <div className="text-xl">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : ownersBookings.length > 0 ? (
+          ownersBookings.map((booking) => {
+            const matchingAccommodation = accommodations.find(
+              (accommodation) => accommodation.id === booking.accommodationId
+            )
 
-                  <BookingDates booking={booking} />
-                  
-                  <div>
-                    <span className="text-2xl">
-                      Total price: ${booking.price}
-                    </span>
+            return matchingAccommodation ? (
+              <Link
+                key={booking.id}
+                to={`/booking/${booking.id}/${matchingAccommodation.id}`}
+                className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mt-3"
+              >
+                <div className="w-48">
+                  <img
+                    className="object-cover"
+                    src={`http://localhost:5000/images/${matchingAccommodation.photos[0]}`}
+                    alt=""
+                  />
+                </div>
+                <div className="py-3 pr-3 grow">
+                  <div className="text-xl">
+                    <h2 className="text-xl">{matchingAccommodation.title}</h2>
+
+                    <BookingDates booking={booking} />
+
+                    <div>
+                      <span className="text-2xl">
+                        Total price: ${booking.price}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          )) 
-        }
+              </Link>
+            ) : null
+          })
+        ) : (
+          <div className="text-center">
+            <p className="text-xl"> No Booking Found.</p>
+            <p>Want to book an airbnb? Kindly go to the <Link to={'/'} className="link-color">Home page</Link> and select an airbnb of your choice and book it </p>
+          </div>
+        )}
       </div>
     </div>
   )
