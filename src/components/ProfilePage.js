@@ -38,7 +38,7 @@ const ProfilePage = () => {
           </button>
         </div>
       ) : (
-        <div className="text-center">
+        <div className="text-center text-xl">
           <h5>Not yet logged in</h5>
           <p>Please <Link to={'/login'} className="link-color">log in</Link> to view your profile.</p>
         </div>
