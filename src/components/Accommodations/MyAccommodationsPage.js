@@ -32,7 +32,7 @@ const MyAccommodationsPage = () => {
             Add new Accommodation
           </Link>
         ) : (
-          <p className="text-center">Please <Link to={'/'} className="link-color">log in</Link> to add new accommodations</p>
+          <p className="text-center hidden">Please <Link to={'/'} className="link-color">log in</Link> to add new accommodations</p>
         )}
       </div>
 
@@ -61,7 +61,7 @@ const MyAccommodationsPage = () => {
             </Link>
           ))
         ) : (
-          <p className="text-center">Please <Link to={'/'} className="link-color">log in</Link> to view your accommodations</p>
+          <p className="text-center">Please <Link to={'/'} className="link-color">log in</Link> to view your accommodations and to add a new accommodation</p>
         )}
       </div>
     </div>

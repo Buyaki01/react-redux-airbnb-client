@@ -1,7 +1,8 @@
-# react-redux-airbnb-client
+# [react-redux-airbnb-client](https://react-redux-airbnb-client.onrender.com)
+Welcome to the frontend of the Airbnb MERN (MongoDB, Express, React, Node.js) application. This section provides an overview of the app and its features, along with instructions on how to get started. For the backend code, please visit the [airbnb-app-server](https://github.com/Buyaki01/airbnb-app-server) repository.
 
 ## Overview
-This is the frontend of a Airbnb MERN (MongoDB, Express, React, Node.js) application that allows owners of accommodations/apartments to manage their listings. With this app, owners can easily add, edit, and delete details about their properties, making it easier for prospective clients to find and book their next vacation rental.
+This is the frontend of an Airbnb application that allows owners of accommodations/apartments to manage their listings. With this app, owners can easily add, edit, and delete details about their properties, making it easier for prospective clients to find and book their next vacation rental.
 
 ## Features
 - **Add accommodations**: Owners can easily add new accommodations to the app, including details like the property's name, description, location, amenities, and pricing.
@@ -58,7 +59,7 @@ Feel free to check the [issues page](https://github.com/Buyaki01/react-redux-air
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+If you like this project, give it a ⭐️!
 
 ## Acknowledgments
 - Inspiration: [Dave Gray](https://www.youtube.com/@DaveGrayTeachesCode)
