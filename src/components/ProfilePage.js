@@ -20,9 +20,9 @@ const ProfilePage = () => {
     if (isSuccess) navigate('/')
   }, [isSuccess, navigate])
 
-  if (isLoading) return <p>Logging Out...</p>
+  if (isLoading) return <p className="text-center text-xl">Logging Out...</p>
 
-  if (isError) return <p>Error: {error.data?.message}</p>
+  if (isError) return <p className="text-center text-xl">Error: {error.data?.message}</p>
 
   return (
     <div>

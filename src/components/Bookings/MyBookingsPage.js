@@ -65,8 +65,8 @@ const MyBookingsPage = () => {
             ) : null
           })
         ) : (
-          <div className="text-center">
-            <p className="text-xl"> No Booking Found.</p>
+          <div className="text-center text-xl">
+            <p> No Booking Found.</p>
             <p>Want to book an airbnb? Kindly go to the <Link to={'/'} className="link-color">Home page</Link> and select an airbnb of your choice and book it </p>
           </div>
         )}
