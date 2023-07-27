@@ -18,18 +18,18 @@ function App() {
     <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<AccommodationsPage/>}/>
-          <Route path='/login' element={<LoginPage/>}/>
-          <Route path='/register' element={<RegisterPage/>}/>
-          <Route path='/accommodations/:id' element={<ShowAccommodationPage/>}/>
+          <Route path='login' element={<LoginPage/>}/>
+          <Route path='register' element={<RegisterPage/>}/>
+          <Route path='accommodations/:id' element={<ShowAccommodationPage/>}/>
           
           <Route element={<PersistLogin />}>
             <Route element={<Prefetch/>}>
-              <Route path='/profile' element={<ProfilePage/>}/>
-              <Route path='/mybookings' element={<MyBookingsPage/>}/>
-              <Route path='/booking/:bookingId/:accommodationId' element={<ShowBookingPage/>}/>
-              <Route path='/myaccommodations' element={<MyAccommodationsPage/>}/>
-              <Route path='/accommodations/new' element={<CreateNewAccommodation/>}/>
-              <Route path='/accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
+              <Route path='profile' element={<ProfilePage/>}/>
+              <Route path='mybookings' element={<MyBookingsPage/>}/>
+              <Route path='booking/:bookingId/:accommodationId' element={<ShowBookingPage/>}/>
+              <Route path='myaccommodations' element={<MyAccommodationsPage/>}/>
+              <Route path='accommodations/new' element={<CreateNewAccommodation/>}/>
+              <Route path='accommodations/edit/:id' element={<EditAccommodationsPage/>}/>
             </Route>
           </Route>
         </Route>

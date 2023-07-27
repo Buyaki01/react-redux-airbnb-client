@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
 import { useSelector } from "react-redux"
@@ -32,7 +32,7 @@ const MyAccommodationsPage = () => {
             Add new Accommodation
           </Link>
         ) : (
-          <p className="text-center text-xl hidden">Please <Link to={'/'} className="link-color">log in</Link> to add new accommodations</p>
+          <Navigate to="/login" state={{ from: location }} replace />
         )}
       </div>
 
@@ -61,7 +61,7 @@ const MyAccommodationsPage = () => {
             </Link>
           ))
         ) : (
-          <p className="text-center text-xl">Please <Link to={'/'} className="link-color">log in</Link> to view your accommodations and to add a new accommodation</p>
+          <Navigate to="/login" state={{ from: location }} replace />
         )}
       </div>
     </div>
