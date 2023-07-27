@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate, useLocation } from "react-router-dom"
 import BookingDates from "./BookingDates"
 import useAuth from "../../hooks/useAuth"
 import { useSelector } from "react-redux"
@@ -10,6 +10,8 @@ import {
 import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
 
 const MyBookingsPage = () => {
+  const location = useLocation()
+  
   const { id: userId, isAuthenticated } = useAuth()
 
   const accommodations = useSelector(selectAllAccommodations)
@@ -26,9 +28,7 @@ const MyBookingsPage = () => {
         {isLoading ? (
           <p className="text-center">Loading...</p>
         ): !isAuthenticated ? (
-          <div className="text-center">
-            <p className="text-xl">Please <Link to={'/'} className="link-color">log in</Link> to view your bookings</p>
-          </div>
+          <Navigate to="/login" state={{ from: location }} replace />
         ) : ownersBookings.length > 0 ? (
           ownersBookings.map((booking) => {
             const matchingAccommodation = accommodations.find(
