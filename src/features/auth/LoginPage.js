@@ -77,14 +77,15 @@ const LoginPage = () => {
           />
           <button className="primary mt-2 mb-2"> Login </button>
 
-          <label htmlFor="persist">
+          <label htmlFor="persist" className="flex items-center gap-2">
             <input
               type="checkbox"
+              className="h-6 w-6"
               id="persist"
               onChange={() => setPersist(prev => !prev)}
               checked={persist}
             />
-            Trust This Device
+            Stay Logged In
           </label>
 
           <div className="text-center mt-2 text-gray-500">
