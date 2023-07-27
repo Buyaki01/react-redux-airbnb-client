@@ -1,9 +1,10 @@
-import { Link, Navigate } from "react-router-dom"
+import { Link, Navigate, useLocation } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import { selectAllAccommodations } from "../../features/accommodations/accommodationsApiSlice"
 import { useSelector } from "react-redux"
 
 const MyAccommodationsPage = () => {
+  const location = useLocation()
 
   const { id: userId, isAuthenticated } = useAuth()
 
